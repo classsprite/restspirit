@@ -14,9 +14,8 @@ def register():
 		password = request.headers.get('password')					#密码
 		no = request.headers.get('no')								#学/工号
 		department = request.headers.get('department')				#院系
-		grade = request.headers.get('grade')						#年级
-		title = request.headers.get('title')						#职称
-		
+		grade_or_title = request.headers.get('grade_or_title')		#年级
+
 		salt = create_salt()										#盐值
 		password = md5(md5(password) + salt  						#加盐加密
 
@@ -43,15 +42,17 @@ def register():
 
 		#更新学生/教师表
 		if role == 's':
-			cur.execute('''INSERT INTO public.student (sid, grade) VALUES (%s, %s);''', (uid, grade))
+			cur.execute('''INSERT INTO public.student (sid, grade) VALUES (%s, %s);''', (uid, grade_or_title))
 			conn.commit()
 		else:
-			cur.execute('''INSERT INTO public.teacher (tid, title) VALUES (%s, %s);''', (uid, title))
+			cur.execute('''INSERT INTO public.teacher (tid, title) VALUES (%s, %s);''', (uid, grade_or_title))
 			conn.commit()	
 
 		cur.close()
 		conn.close()
 
+    return jsonify({}), 200
+    
 def md5(str):
 	m = hashlib.md5()
 	m.update(str)
