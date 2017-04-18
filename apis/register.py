@@ -12,13 +12,13 @@ def register():
 		email = request.headers.get('email')						#邮箱
 		username = request.headers.get('username')					#用户名
 		password = request.headers.get('password')					#密码
-		no = request.headers.get('no')								#学/工号
+		no = request.headers.get('no')								#学号/工号
 		department = request.headers.get('department')				#院系
-		grade_or_title = request.headers.get('grade_or_title')		#年级
+		grade_or_title = request.headers.get('grade_or_title')		#年级或职称
 
 		salt = create_salt()										#盐值
-		password = md5(md5(password) + salt  						#加盐加密
-
+		password = md5(md5(password) + salt)  						#加盐加密
+		
 		conn = psycopg2.connect(database="ktjl", user="postgres", password="admin", host="127.0.0.1", port="5432")
 		cur = conn.cursor()
 		
@@ -28,7 +28,7 @@ def register():
 		conn.commit()
 
 		#获取用户id
-		cur.execute('''SELECT id FROM public.users WHERE no = %s;''', (no,))
+		cur.execute('''SELECT id FROM public.users WHERE no = '%s';''', (no,))
 		conn.commit()		
 		uid = cur.fetchall()[0][0]
 
@@ -51,8 +51,8 @@ def register():
 		cur.close()
 		conn.close()
 
-    return jsonify({}), 200
-    
+	return 0
+
 def md5(str):
 	m = hashlib.md5()
 	m.update(str)
