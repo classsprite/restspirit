@@ -1,6 +1,6 @@
 # coding=utf-8
-from flask import Flask, requset
-import base64, hashlib
+from flask import Flask, request
+import base64, hashlib, psycopg2
 
 app = Flask(__name__)
 
@@ -11,8 +11,8 @@ app = Flask(__name__)
 #	   1：密码错误
 @app.route('/login/', methods=['GET'])
 def login():
-	ans = 0;
-	if requset.method == 'GET':
+	ans = '';
+	if request.method == 'GET':
 		username = request.args.get('username')							#获取用户名
 		password = request.args.get('password')							#获取base64加密后的密码
 
@@ -27,7 +27,7 @@ def login():
 		conn.commit()
 		rows = cur.fetchall()        # all rows in table
 		if len(rows) == 0:											#没有此用户
-			ans = -1					
+			ans = '-1'					
 		else:
 			uid = rows[0][0]
 			#获取该用户盐值
@@ -44,9 +44,9 @@ def login():
 			dbpassword = rows[0][0]
 
 			if dbpassword == password :
-				ans = 0
+				ans = '0'
 			else:
-				ans = 1
+				ans = '1'
 		return ans
 
 def md5(str):

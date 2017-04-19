@@ -17,3 +17,8 @@ CREATE TABLE salt (
 cursor.execute(sql [, optional parameters])
 　　此例程执行SQL语句。可被参数化的SQL语句（即占位符，而不是SQL文字）。 psycopg2的模块支持占位符用％s标志
 　　例如：cursor.execute("insert into people values (%s, %s)", (who, age))
+
+
+创建admin：
+INSERT INTO public.users (no, type, email, username, password) 
+	VALUES ('2010000000', 's', 'test@mails.com', 'admin', '940eace6ed64673b5de2ea7976a57685');
