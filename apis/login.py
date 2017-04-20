@@ -4,7 +4,6 @@ import base64, hashlib, psycopg2
 
 app = Flask(__name__)
 
-
 #返回ans：
 #     -1：没有此用户
 #	   0：成功登陆
