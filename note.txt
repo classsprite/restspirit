@@ -19,6 +19,6 @@ cursor.execute(sql [, optional parameters])
 　　例如：cursor.execute("insert into people values (%s, %s)", (who, age))
 
 
-创建admin：
+创建admin： 
 INSERT INTO public.users (no, type, email, username, password) 
-	VALUES ('2010000000', 's', 'test@mails.com', 'admin', '940eace6ed64673b5de2ea7976a57685');
+	VALUES ('2010000000', 's', 	'test@mails.com', 'admin', '940eace6ed64673b5de2ea7976a57685');

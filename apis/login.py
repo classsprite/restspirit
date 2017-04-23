@@ -37,7 +37,7 @@ def login():
 			password = md5(md5(password) + salt)
 
 			#获取数据库中加密后的密码
-			cur.execute("SELECT password FROM public.users WHERE uid = '%s';" % (uid,)) 
+			cur.execute("SELECT password FROM public.users WHERE id = '%s';" % (uid,)) 
 			conn.commit()
 			rows = cur.fetchall()        # all rows in table
 			dbpassword = rows[0][0]
