@@ -54,5 +54,5 @@ def md5(str):
 	return m.hexdigest()
 
 
-if __name__ == '__main__':
-	app.run(debug=True)	
+#if __name__ == '__main__':
+#	app.run(debug=True)	

@@ -83,5 +83,5 @@ def create_salt(length = 4):
 		salt += chars[random.randint(0, len_chars)]  
 	return salt  
 
-if __name__ == '__main__':
-	app.run(debug=True)
+#if __name__ == '__main__':
+#	app.run(debug=True)
