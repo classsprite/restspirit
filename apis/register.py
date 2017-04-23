@@ -42,7 +42,6 @@ def register():
 			cur.execute("SELECT id FROM public.users WHERE username = %s;", (username,))
 			conn.commit()		
 			uid = cur.fetchall()[0][0]
-			ans += "id = " + str(uid) + "\n"
 
 			#存储盐值
 			cur.execute('''INSERT INTO public.salt (uid, salt) VALUES (%s, %s);''', (uid, salt))
