@@ -1,8 +1,9 @@
 # coding=utf-8
 from flask import Flask, request
 import base64, hashlib, psycopg2
+import 
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 #返回ans：
 #     -1：没有此用户

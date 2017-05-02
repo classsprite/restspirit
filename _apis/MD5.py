@@ -5,7 +5,7 @@ def md5(str):
 	m.update(str)
 	return m.hexdigest()
 
-print md5(md5('admin') + 'abcd')#940eace6ed64673b5de2ea7976a57685
+print md5(md5('admin') + 'n75T')#1ee55bf4e048d2d7c960ed95aa031e78
 print base64.b64encode('admin') 		  #YWRtaW4=
 
 

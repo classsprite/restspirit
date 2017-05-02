@@ -2,14 +2,15 @@
 from flask import Flask, request
 from random import Random
 import psycopg2, hashlib
+import start.py
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 #retuan ans(String)
 #-1		用户名已经被注册
 #0		注册成功
 
-@app.route('/register', methods=['POST'])
+@app.route('/register/', methods=['POST'])
 def register():
 	if request.method == 'POST':
 		log = ""

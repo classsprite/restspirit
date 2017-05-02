@@ -2,6 +2,8 @@
 INSERT INTO public.users (id, no, type, email, username, password) 
 	VALUES (2, '100000002', 's', 'test@test.com', 'test2', 'asddfgs');
 
+
+
 É¾³ý£º
 DELETE FROM public.users WHERE id = 2;
 
